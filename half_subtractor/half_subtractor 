@@ -1,0 +1,17 @@
+`
+// Half Subtractor
+// Inputs: a, b
+// Outputs: diff = a ^ b, borrow = ~a & b
+
+module half_subtractor (
+    input  wire a,
+    input  wire b,
+    output wire diff,
+    output wire borrow
+);
+
+    // Behavioral / combinational implementation
+    assign diff   = a ^ b;     // difference (XOR)
+    assign borrow = (~a) & b;  // borrow when a is 0 and b is 1
+
+endmodule
