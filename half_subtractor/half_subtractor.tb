@@ -1,0 +1,35 @@
+`
+`include "half_subtractor.v"
+
+module tb_half_subtractor;
+    reg a, b;
+    wire diff, borrow;
+
+    // Instantiate DUT
+    half_subtractor dut (
+        .a(a),
+        .b(b),
+        .diff(diff),
+        .borrow(borrow)
+    );
+
+    initial begin
+        // Waveform dump (for GTKWave or similar)
+        $dumpfile("tb_half_subtractor.vcd");
+        $dumpvars(0, tb_half_subtractor);
+
+        // Print header
+        $display("time\t a b | diff borrow");
+        $monitor("%0t\t %b %b |  %b    %b", $time, a, b, diff, borrow);
+
+        // Apply all input combinations
+        a = 0; b = 0; #10;
+        a = 0; b = 1; #10;
+        a = 1; b = 0; #10;
+        a = 1; b = 1; #10;
+
+        #5;
+        $finish;
+    end
+
+endmodule
