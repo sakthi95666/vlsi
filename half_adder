@@ -1,0 +1,12 @@
+`
+
+module half_adder (
+    input  wire a,    // First input bit
+    input  wire b,    // Second input bit
+    output wire sum,  // Sum output
+    output wire cout  // Carry output
+);
+    // Half adder logic
+    assign sum  = a ^ b;   // Sum is XOR of inputs
+    assign cout = a & b;   // Carry is AND of inputs
+endmodule
